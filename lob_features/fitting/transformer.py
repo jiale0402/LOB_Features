@@ -23,7 +23,7 @@ class TransformerRegressor(nn.Module):
     def forward(self, x):
         x = self.input_projection(x)
         x = self.transformer_encoder(x)
-        x = x.mean(dim=1)  # average pooling across sequence
+        x = x.mean(dim=1)
         return self.regressor(x).squeeze(-1)
 
 
