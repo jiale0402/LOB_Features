@@ -1,0 +1,55 @@
+[project]
+name = "lob_features"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "jialechen2025@u.northwestern.edu"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "polars (>=1.29.0,<2.0.0)",
+    "numpy (>=2.2.5,<3.0.0)",
+    "pandas (>=2.2.3,<3.0.0)",
+    "tqdm (>=4.67.1,<5.0.0)",
+    "mypy (>=1.15.0,<2.0.0)",
+    "ruff (>=0.11.9,<0.12.0)",
+    "pandas-stubs (>=2.2.3.250308,<3.0.0.0)",
+    "types-tqdm (>=4.67.0.20250417,<5.0.0.0)",
+    "pyarrow (>=20.0.0,<21.0.0)"
+]
+packages = [
+    {include = "src"}
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+# ruff
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = [
+    # isort
+    "I",
+    # pyflakes
+    "F",
+    # pycodestyle
+    "E",
+    "W",
+    # pyupgrade
+    "UP",
+    # pylint - bugbear
+    "B",
+    ]
+
+ignore = ["E501", "E402"]
+
+[tool.ruff.lint.isort]
+force-to-top = ["lob_features"]
+known-first-party = ["lob_features"]
+from-first = true
+lines-between-types = 1
+section-order = ["first-party", "future", "third-party", "standard-library", "local-folder"]

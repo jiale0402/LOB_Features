@@ -1,0 +1,26 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  init:
+    cmds:
+      - poetry install
+  
+  lint:
+    dir: ./
+    cmds:
+      - poetry run ruff check .
+      - poetry run ruff format --check
+      - poetry run mypy -p lob_features
+  
+  format:
+    dir: '.'
+    cmds:
+      - poetry run ruff format
+      - poetry run ruff check --fix
+
+  dispatch:
+    dir: "."
+    cmds:
+      - sh scripts/dispatch.sh
